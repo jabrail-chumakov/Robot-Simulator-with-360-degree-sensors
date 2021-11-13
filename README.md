@@ -1,4 +1,4 @@
-Python Robotics Simulator
+Python Robot Simulator with 360 degree sensors
 ================================
 
 This is a simple, portable robot simulator developed by [Student Robotics](https://studentrobotics.org).
