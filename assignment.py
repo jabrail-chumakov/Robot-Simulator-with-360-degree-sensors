@@ -112,50 +112,67 @@ def find_golden_token():
 while 1:
 	dist_silver, rot_silver = find_silver_token()
 	dist_golden, rot_golden = find_golden_token()	
-	if dist_silver == -1:
-		print("Token is not detected!")
-		turn(10,1)
-	elif dist_silver < d_th:
+	if dist_silver < d_th:
 		print("Token detected!")
 		if R.grab():
-			print("Token grabbed")
+			print("Silved box was grabbed")
 			turn(29.6, 2)
-			drive(20,1)
+			drive(20, 1)
 			R.release()
-			drive(-20,1)
-			print("Token released")
-			turn(-29.6,2)
+			drive(-20, 1)
+			print("Silver box was released")
+			turn(-29.6, 2)
 	elif 45.0 > rot_silver > -45.0:	
 		if rot_silver > a_th:
 			turn(2, 0.5)
+			print("Adjusting angle to silver box")
 		elif rot_silver < -a_th:
 			turn(-2, 0.5)
+			print("Adjusting angle to silver box")
 		else:
-			print("Silver box is somewhere towards me")
-        		drive(30, 0.01)
-	elif rot_silver > 150.0 or rot_silver < -150.0:
-		if dist_golden != -1 and dist_golden < 0.5 and rot_golden < 0:
-			print("Ooops! Golden. Turn right!")
-			turn(2, 0.5)
-		elif dist_golden != -1 and dist_golden < 0.5 and rot_golden > 0:
-			print("Ooops! Golden. Turn left!")
-			turn(-2, 0.5)
-		else:
-			print("I see above 150")
-			drive(30, 0.01)
-	elif 45.0 < rot_silver < 89.9 or 90.1 < rot_silver < 150.0 or -89.9 < rot_silver < -45 or -150.0 < rot_silver < -90.1:
-		if dist_golden != -1 and dist_golden < 0.5 and rot_golden < 0:
-			print("Ooops! Golden. Turn right!")
-			turn(2, 0.5)
-		elif dist_golden != -1 and dist_golden < 0.5 and rot_golden > 0:
-			print("Ooops! Golden. Turn left!")
-			turn(-2, 0.5)
-		else:
-			print("I see between 45 and 90")
-			drive(30, 0.01)
-	elif 89.9 < rot_silver < 90.1:
+			if dist_golden != -1 and dist_golden < 0.5 and rot_golden < 0:
+				print("45 and -45. Turn right!")
+				turn(10, 3)
+			elif dist_golden != -1 and dist_golden < 0.5 and rot_golden > 0:
+				print("45 and -45 2. Turn left!")
+				turn(-10, 3)
+			else:
+				print("Silver box is somewhere towards me")
+        			drive(30, 0.01)
+	elif 89.5 <= rot_silver <= 90.5:
 		print("Turn right a bit!")
 		turn(15, 2)
-	elif -90.1 <  rot_silver < -89.9:
+	elif -90.5 <=  rot_silver <= -89.5:
 		print("Turn left a bit!")
-		turn(-15, 2)	
+		turn(-15, 2)
+	elif rot_silver > 150.0 or rot_silver < -150.0:
+		if dist_golden != -1 and dist_golden < 0.5 and rot_golden < 0:
+			print("150 and -150. Turn right!")
+			turn(2, 0.5)
+			drive(10, 0.5)
+		elif dist_golden != -1 and dist_golden < 0.5 and rot_golden > 0:
+			print("150 and -150 2. Turn left!")
+			turn(-2, 0.5)
+			drive(10, 0.5)
+		elif 5.0 > dist_silver > 2.8:
+			turn(15, 2)
+		elif  5.0 > dist_silver > 2.8:
+			turn(-15, 2)
+		else:
+			if dist_silver < 3:
+				drive(30, 0.01)
+				print("I see above 150")
+			
+	elif 45.0 < rot_silver < 89.5 or 90.5 < rot_silver < 150.0 or -89.5 < rot_silver < -45 or -150.0 < rot_silver < -90.5:
+		if dist_golden != -1 and dist_golden < 0.5 and rot_golden < 0:
+			print("Lots . Turn right!")
+			turn(10, 3)
+			drive(12, 6)
+		elif dist_golden != -1 and dist_golden < 0.5 and rot_golden > 0:
+			print("Lots 2. Turn left!")
+			turn(-10, 3)
+			drive(12, 6)
+		else:
+			print("I see between 45 and 90")
+			print("Silver dist: ", dist_silver)
+			drive(30, 0.01)
