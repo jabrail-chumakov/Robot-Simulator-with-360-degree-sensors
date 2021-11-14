@@ -109,13 +109,21 @@ while 1:
 			#print("Moving in the search of silver box!")
 			print("Golden angle: ", rot_golden)
 			#print("Golden distance: ", dist_golden)
-			#print("Silver angle: ", rot_silver)
+			print("Silver angle: ", rot_silver)
 			#print("Silver ditance: ", dist_silver)
 			drive(30, 0.1)	
 			
 	elif dist_golden < g_th and abs(rot_golden) < 90.0:
-		else: 
+		if smth:
+			turn(20 , 0.5)
+			print("Когда угол положительный, но нам все равно налево нужно")
+		elif smth:
+			turn(-20, 0.5)
+			print("Когда угол отрицательный, но нам все равно направо нужно")
+		else:
 			if rot_golden < 0.0:
+				print("Left")
 				turn(20, 0.5)
 			elif rot_golden > 0.0:
+				print("Right")
 				turn(-20, 0.5)
