@@ -114,7 +114,8 @@ while 1:
 			drive(30, 0.1)	
 			
 	elif dist_golden < g_th and abs(rot_golden) < 90.0:
-		if rot_golden < 0.0:
-			turn(20, 0.5)
-		elif rot_golden > 0.0:
-			turn(-20, 0.5)
+		else: 
+			if rot_golden < 0.0:
+				turn(20, 0.5)
+			elif rot_golden > 0.0:
+				turn(-20, 0.5)
