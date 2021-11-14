@@ -3,43 +3,19 @@ from __future__ import print_function
 import time
 from sr.robot import *
 
-"""
-Exercise 3 python script
-
-We start from the solution of the exercise 2
-Put the main code after the definition of the functions. The code should make the robot:
-	- 1) find and grab the closest silver marker (token)
-	- 2) move the marker on the right
-	- 3) find and grab the closest golden marker (token)
-	- 4) move the marker on the right
-	- 5) start again from 1
-
-The method see() of the class Robot returns an object whose attribute info.marker_type may be MARKER_TOKEN_GOLD or MARKER_TOKEN_SILVER,
-depending of the type of marker (golden or silver).
-Modify the code of the exercise2 to make the robot:
-
-1- retrieve the distance and the angle of the closest silver marker. If no silver marker is detected, the robot should rotate in order to find a marker.
-2- drive the robot towards the marker and grab it
-3- move the marker forward and on the right (when done, you can use the method release() of the class Robot in order to release the marker)
-4- retrieve the distance and the angle of the closest golden marker. If no golden marker is detected, the robot should rotate in order to find a marker.
-5- drive the robot towards the marker and grab it
-6- move the marker forward and on the right (when done, you can use the method release() of the class Robot in order to release the marker)
-7- start again from 1
-
-	When done, run with:
-	$ python run.py exercise3.py
-
-"""
-
-
-a_th = 2.0
-""" float: Threshold for the control of the orientation"""
+o_th = 2.0
+""" float: Threshold for the control of the orientation """
 
 d_th = 0.4
-""" float: Threshold for the control of the linear distance"""
+""" float: Threshold for the control of the linear distance """
+
+g_th = 0.7
+""" float: Threshold for the control of the distance to the nearest golden box """
+
+
 
 R = Robot()
-""" instance of the class Robot"""
+""" instance of the class Robot """
 
 def drive(speed, seconds):
     """
@@ -107,7 +83,14 @@ def find_golden_token():
     else:
     	return dist_golden, rot_golden
 
-
+def place_silver_token():
+	print("Silved box was grabbed")
+	turn(40, 1.5)
+	drive(20, 1)
+	R.release()
+	print("Silver box was released")
+	drive(-20, 1)
+	turn(-40, 1.5)
 
 while 1:
 	dist_silver, rot_silver = find_silver_token()
@@ -115,64 +98,23 @@ while 1:
 	if dist_silver < d_th:
 		print("Token detected!")
 		if R.grab():
-			print("Silved box was grabbed")
-			turn(29.6, 2)
-			drive(20, 1)
-			R.release()
-			drive(-20, 1)
-			print("Silver box was released")
-			turn(-29.6, 2)
-	elif 45.0 > rot_silver > -45.0:	
-		if rot_silver > a_th:
-			turn(2, 0.5)
-			print("Adjusting angle to silver box")
-		elif rot_silver < -a_th:
-			turn(-2, 0.5)
-			print("Adjusting angle to silver box")
-		else:
-			if dist_golden != -1 and dist_golden < 0.5 and rot_golden < 0:
-				print("45 and -45. Turn right!")
-				turn(10, 3)
-			elif dist_golden != -1 and dist_golden < 0.5 and rot_golden > 0:
-				print("45 and -45 2. Turn left!")
-				turn(-10, 3)
-			else:
-				print("Silver box is somewhere towards me")
-        			drive(30, 0.01)
-	elif 89.5 <= rot_silver <= 90.5:
-		print("Turn right a bit!")
-		turn(15, 2)
-	elif -90.5 <=  rot_silver <= -89.5:
-		print("Turn left a bit!")
-		turn(-15, 2)
-	elif rot_silver > 150.0 or rot_silver < -150.0:
-		if dist_golden != -1 and dist_golden < 0.5 and rot_golden < 0:
-			print("150 and -150. Turn right!")
-			turn(2, 0.5)
-			drive(10, 0.5)
-		elif dist_golden != -1 and dist_golden < 0.5 and rot_golden > 0:
-			print("150 and -150 2. Turn left!")
-			turn(-2, 0.5)
-			drive(10, 0.5)
-		elif 5.0 > dist_silver > 2.8:
-			turn(15, 2)
-		elif  5.0 > dist_silver > 2.8:
-			turn(-15, 2)
-		else:
-			if dist_silver < 3:
-				drive(30, 0.01)
-				print("I see above 150")
+			place_silver_token()
 			
-	elif 45.0 < rot_silver < 89.5 or 90.5 < rot_silver < 150.0 or -89.5 < rot_silver < -45 or -150.0 < rot_silver < -90.5:
-		if dist_golden != -1 and dist_golden < 0.5 and rot_golden < 0:
-			print("Lots . Turn right!")
-			turn(10, 3)
-			drive(12, 6)
-		elif dist_golden != -1 and dist_golden < 0.5 and rot_golden > 0:
-			print("Lots 2. Turn left!")
-			turn(-10, 3)
-			drive(12, 6)
+	if  dist_golden > g_th or abs(rot_golden) > 90.0:	
+		if 100.0 > rot_silver > o_th and dist_silver < 1.0:
+			turn(10, 0.01)
+		elif -o_th > rot_silver > -100.0 and dist_silver < 1.0:
+			turn(-10, 0.01)		
 		else:
-			print("I see between 45 and 90")
-			print("Silver dist: ", dist_silver)
-			drive(30, 0.01)
+			#print("Moving in the search of silver box!")
+			print("Golden angle: ", rot_golden)
+			#print("Golden distance: ", dist_golden)
+			#print("Silver angle: ", rot_silver)
+			#print("Silver ditance: ", dist_silver)
+			drive(30, 0.1)	
+			
+	elif dist_golden < g_th and abs(rot_golden) < 90.0:
+		if rot_golden < 0.0:
+			turn(20, 0.5)
+		elif rot_golden > 0.0:
+			turn(-20, 0.5)
