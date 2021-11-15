@@ -141,7 +141,7 @@ then robot moves straight
 
 (3) If the robot on the distance of 0.4 from the silver token, then grabs it, puts it behind and returns to the initial position
 
-(4) If the robot on the distance of 0.7 from the golden token and absolute golden angle is less than 90 degress, then:
+(4) If the robot on the distance of 0.7 from the golden token and absolute golden angle is less than 90 degrees, then:
 	(a) If angle is more or equal to 25: Robot turns left
 	(b) If angle is less or equal to -25: Robot turns right
 	(c) Otherwise, a special avoiding case is executed which checks where to turn depending on the closest golden token distance
@@ -182,3 +182,4 @@ while 1:
 			else:
 				print("Special case: Left!")
 				turn(-10, 0.5)
+			
