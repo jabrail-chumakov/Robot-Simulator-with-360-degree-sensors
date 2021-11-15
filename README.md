@@ -111,4 +111,6 @@ The proposed solution is simple and efficient and works almost perfectly. The so
 
 ``` If the robot on the distance of 0.7 from the golden token and golden angle is less than 90 degrees or more than -90 degrees, then three possible outcomes may occur:```
 
-* `info`: a `MarkerInfo` object describing the marker itself. Has the following attributes:
+* `First outcome`: If the angle relative to the golden token is more or equal to 25 degrees, then the robot should turn left.
+* `Second outcome`: If the angle relative to the golden token is less or equal to -25 degrees, then the robot should turn right
+* `Third outcome`: Otherwise, a special avoiding case is executed which checks where to turn depending on the closest golden token distance
