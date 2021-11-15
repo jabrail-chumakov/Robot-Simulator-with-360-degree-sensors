@@ -124,4 +124,4 @@ Video demonstration
 
 Below you can watch a demonstration of this assignment:
 
-[![Watch the video](http://i3.ytimg.com/vi/c6LJVWnKfDc/maxresdefault.jpg)](https://www.youtube.com/watch?v=c6LJVWnKfDc)
+[![Watch the video](https://user-images.githubusercontent.com/67557966/141862028-4c13ba55-2e97-415f-b7d4-bb2fb68122c1.jpg)](https://www.youtube.com/watch?v=c6LJVWnKfDc)
