@@ -124,4 +124,6 @@ Video demonstration
 
 Below you can watch a demonstration of this assignment:
 
+[<img src="https://user-images.githubusercontent.com/67557966/141862028-4c13ba55-2e97-415f-b7d4-bb2fb68122c1.jpg" width="50%">](https://www.youtube.com/watch?v=c6LJVWnKfDc)
+
 [![Watch the video](https://user-images.githubusercontent.com/67557966/141862028-4c13ba55-2e97-415f-b7d4-bb2fb68122c1.jpg) width="50%"](https://www.youtube.com/watch?v=c6LJVWnKfDc)
