@@ -110,3 +110,5 @@ The proposed solution is simple and efficient and works almost perfectly. The so
 ### Case 4 ###
 
 ``` If the robot on the distance of 0.7 from the golden token and golden angle is less than 90 degrees or more than -90 degrees, then three possible outcomes may occur:```
+
+*`If the angle relative to the golden token is more or equal to 25 degrees, then the robot should turn left`
