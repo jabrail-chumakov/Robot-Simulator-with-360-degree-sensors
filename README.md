@@ -12,21 +12,18 @@ The simulator requires a Python 2.7 installation, the [pygame](http://pygame.org
 Exercise
 -----------------------------
 
-To run one or more scripts in the simulator, use `run.py`, passing it the file names. 
+To run script in the simulator, use `run.py`, passing it the file names. 
 
-I am proposing you three exercises, with an increasing level of difficulty.
-The instruction for the three exercises can be found inside the .py files (exercise1.py, exercise2.py, exercise3.py).
-
-When done, you can run the program with:
+You can run `assignment.py` file by running following command in your folder:
 
 ```bash
-$ python run.py exercise1.py
+$ python run.py assignment.py
 ```
 
-You have also the solutions of the exercises (folder solutions)
+In case if you will place `assignment.py` file in another folder, you should run following command:
 
 ```bash
-$ python run.py solutions/exercise1_solution.py
+$ python run.py path_to_your_folder/assignment.py
 ```
 
 Robot API
