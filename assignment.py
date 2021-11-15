@@ -9,7 +9,7 @@ o_th = 2.0
 d_th = 0.4
 """ float: Threshold for the control of the linear distance """
 
-g_th = 0.7
+g_th = 0.6
 """ float: Threshold for the control of the distance to the nearest golden box """
 
 
@@ -108,22 +108,12 @@ while 1:
 		else:
 			#print("Moving in the search of silver box!")
 			print("Golden angle: ", rot_golden)
-			#print("Golden distance: ", dist_golden)
-			print("Silver angle: ", rot_silver)
-			#print("Silver ditance: ", dist_silver)
 			drive(30, 0.1)	
 			
 	elif dist_golden < g_th and abs(rot_golden) < 90.0:
-		if smth:
-			turn(20 , 0.5)
-			print("Когда угол положительный, но нам все равно налево нужно")
-		elif smth:
+		if rot_golden < 0.0:
+			print("Left")
+			turn(20, 0.5)
+		elif rot_golden > 0.0:
+			print("Right")
 			turn(-20, 0.5)
-			print("Когда угол отрицательный, но нам все равно направо нужно")
-		else:
-			if rot_golden < 0.0:
-				print("Left")
-				turn(20, 0.5)
-			elif rot_golden > 0.0:
-				print("Right")
-				turn(-20, 0.5)
