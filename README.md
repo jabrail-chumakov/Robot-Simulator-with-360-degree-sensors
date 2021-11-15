@@ -97,4 +97,16 @@ The proposed solution is simple and efficient and works almost perfectly. The so
 
 ### Case 1 ###
 
-If the robot is far away from the nearest golden token or angle to the nearest golden token is more than 90 degrees then the robot moves straight.
+```If the robot is far away from the nearest golden token or angle to the nearest golden token is more than 90 degrees then the robot moves straight.```
+
+### Case 2 ###
+
+```If the robot detects a silver token on the distance closer than 1.00, then the robot aligns relatively to silver token and moves towards it.```
+
+### Case 3 ###
+
+```If the robot on a distance of 0.4 from the silver token, then the robot grabs it, rotates at 180 degrees, release this silver token and then the robot returns to its initial position where it was before grabbing.```
+
+### Case 4 ###
+
+``` If the robot on the distance of 0.7 from the golden token and golden angle is less than 90 degrees or more than -90 degrees, then three possible outcomes may occur:```
