@@ -89,3 +89,6 @@ for m in markers:
 ```
 
 [sr-api]: https://studentrobotics.org/docs/programming/sr/
+
+Working principle of proposed solution
+-----------------------------
