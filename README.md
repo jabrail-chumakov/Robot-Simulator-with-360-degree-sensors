@@ -92,3 +92,5 @@ for m in markers:
 
 Working principle of proposed solution
 -----------------------------
+
+The proposed solution is simple and efficient and works almost perfectly. The solution consists of 4 cases when the robot needs to complete a particular command.
