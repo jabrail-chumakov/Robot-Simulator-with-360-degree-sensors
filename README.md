@@ -114,3 +114,14 @@ The proposed solution is simple and efficient and works almost perfectly. The so
 * `First outcome`: If the angle relative to the golden token is more or equal to 25 degrees, then the robot should turn left.
 * `Second outcome`: If the angle relative to the golden token is less or equal to -25 degrees, then the robot should turn right.
 * `Third outcome`: A special avoiding case is executed which checks where to turn depending on the closest golden token distance. Frequently it occurs when the robot drives to the corner of the road. In such a scenario robot turns to direction, where the distance to the closest golden box is larger in the range between 75 and 105 degrees.
+
+Flowchart
+-----------------------------
+
+
+Video demonstration
+-----------------------------
+
+Below you can watch a demonstration of this assignment:
+
+[![Watch the video](http://i3.ytimg.com/vi/c6LJVWnKfDc/maxresdefault.jpg)](https://www.youtube.com/watch?v=c6LJVWnKfDc)
