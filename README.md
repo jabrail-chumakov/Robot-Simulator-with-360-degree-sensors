@@ -94,3 +94,7 @@ Working principle of proposed solution
 -----------------------------
 
 The proposed solution is simple and efficient and works almost perfectly. The solution consists of 4 cases when the robot needs to complete a particular command.
+
+### Case 1 ###
+
+If the robot is far away from the nearest golden token or angle to the nearest golden token is more than 90 degrees then the robot moves straight.
