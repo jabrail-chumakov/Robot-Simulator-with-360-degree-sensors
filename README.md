@@ -128,7 +128,8 @@ Below you can watch a demonstration of this assignment:
 
 Drawbacks and possible improvements
 -----------------------------
-
+### First assumptions ###
 ```While this solution works perfectly, on very rare occasions the robot may move in the clockwise direction. This is due to the fact that when a robot grabs and rotates the same silver token many times, the silver token may be placed right in the corner of the golden borders. After that when the robot turns, in its vision radius, the silver token will appear to be the closest available (since it will be in a radius of less than 1). However, this can be easily fixed by slightly reducing the view radius (angle) of the robot itself in the script.```
 
+### Second assumptions ###
 ``` In another case, the robot can get to a sunken corner with golden tokens (imperfect corner where 1 golden token is missing). The script was executed for 1 hour, but in my case, the robot never collided into this area. Therefore, it's difficult to evaluate how the robot will behave in this scenario. However, it can be assumed that it all depends on the angle at which the robot will be to the nearest golden token or rely on the special avoiding case.```
